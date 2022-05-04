@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<h1>Contact Detail</h1>
 
 <div class="flex flex-wrap">
     <div class="w-33 pa3">
@@ -40,11 +40,11 @@
         {% endif %}
 
         <p>
-            <a href="{% url 'view_contact' pk=contact.pk %}">View Contact</a><br>
+            <a href="{% url 'list_contacts' %}">Return to Contact List</a><br>
             <a href="{% url 'edit_contact' pk=contact.pk %}">Edit Contact</a><br>
             <a class="red" href="{% url 'delete_contact' pk=contact.pk %}">Delete Contact</a>
         </p>
     </div>
-    {% endfor %}
+    
 </div>
 {% endblock %}
