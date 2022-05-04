@@ -39,6 +39,12 @@
         </div>
         {% endif %}
 
+        {% for note in contact.notes.all %}
+        <div class="flex">
+            <div class="pr2"><i class=""></i></div>
+            <div>{{ note.note }}</div>
+        </div>
+        {% endfor %}
         <p>
             <a href="{% url 'list_contacts' %}">Return to Contact List</a><br>
             <a href="{% url 'edit_contact' pk=contact.pk %}">Edit Contact</a><br>

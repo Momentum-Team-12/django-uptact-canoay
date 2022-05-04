@@ -55,11 +55,13 @@ def view_contact(request, pk):
 def add_note(request, pk):
     contact = get_object_or_404(Contact, pk=pk)
     if request.method == 'GET':
-        form = NoteForm(instance=contact)
+        form = NoteForm()
     else:
-        form = NoteForm(data=request.POST, instance=contact)
+        form = NoteForm(data=request.POST)
         if form.is_valid():
-            form.save()
-            return redirect(to='list_contacts')
+            new_note = form.save(commit=False)
+            new_note.contact = contact
+            new_note.save()
+            return redirect(to='view_contact', pk=pk)
 
     return render(request, "contacts/add_note.html", {"form": form, "contact": contact})
